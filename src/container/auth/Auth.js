@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import * as yup from 'yup';
 
 function Auth(props) {
 
@@ -26,9 +27,30 @@ function Auth(props) {
     }
 
     const handleForgot = () => {
-
         console.log(emailRef.current.value);
     }
+
+    let authSchema;
+
+    if (userType === 'Login' && reset === false) {
+        authSchema = {
+            email: yup.string().email("Please Eneter Valid Email.").required("Please Enetr Your Email."),
+            password: yup.string().required("Please Enter Password.").min(8,"Password must be 8 characters long")
+        }
+    } else if (userType === 'signup' && reset === false) {
+        authSchema = {
+            name: yup.string().required("Please Enter Your Name."),
+            email: yup.string().email("Please Eneter Valid Email.").required("Please Enetr Your Email."),
+            password: yup.string().required("Please Enter Password.").min(8,"Password must be 8 characters long")
+        }
+    } else if (reset === true) {
+        authSchema = {
+            password: yup.string().required("Please Enter Password.").min(8,"Password must be 8 characters long")
+        }
+    }
+
+    let schema = yup.object().shape(authSchema);
+
     return (
         <div>
             <section id="appointment" className="appointment">
@@ -80,7 +102,7 @@ function Auth(props) {
 
                         {
                             reset === true ?
-                                <div className="text-center"><button onClick={()=> handleForgot()} type="submit">Submit</button></div>
+                                <div className="text-center"><button onClick={() => handleForgot()} type="submit">Submit</button></div>
                                 :
                                 userType === 'Login' ? <div className="text-center"><button onClick={() => handleLogin()} type="submit">Login</button></div> : <div className="text-center"><button onClick={() => handleSignup()} type="submit">Signup</button></div>
                         }
@@ -89,7 +111,7 @@ function Auth(props) {
                             userType === 'Login' ? <div className="text-center mt-2">Create a new account: <Link onClick={() => { setReset(false); setUserType('Signup') }}>Signup</Link> </div> : <div className='text-center mt-2' >Already have an Acoount? <Link onClick={() => { setReset(false); setUserType('Login') }}>Login</Link> </div>
                         }
 
-                        <div className="text-center mt-2"><Link onClick={() => setReset(true) }>Forgot Password?</Link></div>
+                        <div className="text-center mt-2"><Link onClick={() => setReset(true)}>Forgot Password?</Link></div>
 
                     </div>
                 </div>
