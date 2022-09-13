@@ -35,17 +35,17 @@ function Auth(props) {
     if (userType === 'Login' && reset === false) {
         authSchema = {
             email: yup.string().email("Please Eneter Valid Email.").required("Please Enetr Your Email."),
-            password: yup.string().required("Please Enter Password.").min(8,"Password must be 8 characters long")
+            password: yup.string().required("Please Enter Password.").min(8, "Password must be 8 characters long")
         }
     } else if (userType === 'signup' && reset === false) {
         authSchema = {
             name: yup.string().required("Please Enter Your Name."),
             email: yup.string().email("Please Eneter Valid Email.").required("Please Enetr Your Email."),
-            password: yup.string().required("Please Enter Password.").min(8,"Password must be 8 characters long")
+            password: yup.string().required("Please Enter Password.").min(8, "Password must be 8 characters long")
         }
     } else if (reset === true) {
         authSchema = {
-            password: yup.string().required("Please Enter Password.").min(8,"Password must be 8 characters long")
+            email: yup.string().email("Please Eneter Valid Email.").required("Please Enetr Your Email.")
         }
     }
 
