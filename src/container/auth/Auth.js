@@ -53,7 +53,7 @@ function Auth(props) {
         },
     });
 
-    const { handleChange, handleSubmit, errors } = formikObj
+    const { handleChange, handleSubmit, errors, touched, handleBlur } = formikObj
 
 
     return (
@@ -69,8 +69,8 @@ function Auth(props) {
                         }
 
                     </div>
-                    <Formik values={formikObj} onSubmit={handleSubmit}>
-                        <Form className="php-email-form">
+                    <Formik values={formikObj} >
+                        <Form onSubmit={handleSubmit} className="php-email-form">
 
                             {
                                 reset === true ?
@@ -87,8 +87,9 @@ function Auth(props) {
                                                     id="name"
                                                     placeholder="Your Name"
                                                     onChange={handleChange}
+                                                    onBlur={handleBlur}
                                                 />
-                                                <p>{errors.name}</p>
+                                                <p>{errors.name && touched.name ? errors.name : ''}</p>
                                                 <div className="validate" />
                                             </div>
                                         </div>
@@ -104,8 +105,9 @@ function Auth(props) {
                                         id="email"
                                         placeholder="Your Email"
                                         onChange={handleChange}
+                                        onBlur={handleBlur}
                                     />
-                                    <p>{errors.email}</p>
+                                    <p>{errors.email && touched.email ? errors.email : ''}</p>
                                     <div className="validate" />
                                 </div>
                             </div>
@@ -123,8 +125,9 @@ function Auth(props) {
                                                 id="password"
                                                 placeholder="Your Password"
                                                 onChange={handleChange}
+                                                onBlur={handleBlur}
                                             />
-                                            <p>{errors.password}</p>
+                                            <p>{errors.password && touched.password ? errors.password : ''}</p>
                                             <div className="validate" />
                                         </div>
                                     </div>
