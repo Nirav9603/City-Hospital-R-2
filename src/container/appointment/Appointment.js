@@ -15,7 +15,7 @@ function Appointment(props) {
 
     const formikObj = useFormik({
         initialValues: {
-            name: '',
+            name: '' ,
             email: '',
             phone: '',
             date: '',
