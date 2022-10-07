@@ -69,8 +69,8 @@ function Auth(props) {
                         }
 
                     </div>
-                    <Formik values={formikObj} onSubmit={handleSubmit}>
-                        <Form className="php-email-form">
+                    <Formik values={formikObj} >
+                        <Form onSubmit={handleSubmit} className="php-email-form">
 
                             {
                                 reset === true ?
