@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
+import Button from '@mui/material/Button';
 
 function ListAppointment(props) {
 
     const [deta, setData] = useState([]);
+
+
 
     const getDeta = () => {
         let localData = JSON.parse(localStorage.getItem('apt'));
@@ -16,6 +19,14 @@ function ListAppointment(props) {
         }, []
     )
 
+    const handleDelete = (Did) => {
+        let localData = JSON.parse(localStorage.getItem("apt"));
+
+        let data = localData.filter( (l) => l.id !== Did)
+        
+        localStorage.setItem("apt", JSON.stringify(data))
+        getDeta()
+    }
 
     return (
         <div>
@@ -35,7 +46,7 @@ function ListAppointment(props) {
                                         }}
                                     >
                                         <CardBody>
-                                            <CardTitle tag="h5" style={{ color: '#FF6337' }}>
+                                             <CardTitle tag="h5" style={{ color: '#FF6337' }}>
                                                 {d.name}
                                             </CardTitle>
                                             <CardSubtitle
@@ -43,9 +54,9 @@ function ListAppointment(props) {
                                                 tag="h6"
                                             >
                                                 Gender: {d.gender}
-
-
                                             </CardSubtitle>
+                                            <Button variant="contained" size="small" className='me-2' color="info">Edit</Button>
+                                            <Button variant="contained" size="small" color="error" onClick={() => handleDelete(d.id)}>Delete</Button>
                                         </CardBody>
                                     </Card>
                                 </div>

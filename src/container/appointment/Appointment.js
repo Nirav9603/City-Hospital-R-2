@@ -10,10 +10,16 @@ function Appointment(props) {
     const handleAdd = (values) => {
         let localData = JSON.parse(localStorage.getItem("apt"));
 
+        let id = Math.floor(Math.random()*10000)
+
+        let data = {
+            id,...values
+        }
+
         if(localData === null){
-            localStorage.setItem("apt",JSON.stringify([values]))
+            localStorage.setItem("apt",JSON.stringify([data]))
         }else{
-            localData.push(values)
+            localData.push(data)
             localStorage.setItem("apt",JSON.stringify(localData))
         }
 
