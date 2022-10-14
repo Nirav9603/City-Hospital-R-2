@@ -26,7 +26,7 @@ function Doctors(props) {
 
                                 <NavLink to={{
                                     pathname: "/doctor_details",
-                                    state: {d}
+                                    state: {id: d.id}
                                 }}>
                                     <div className="col-6">
                                         <div className="member d-flex align-items-start">
