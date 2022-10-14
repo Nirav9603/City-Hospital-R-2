@@ -1,6 +1,15 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 function Doctors(props) {
+
+    const Data = [
+        { id: "1", name: "Marklin Lora", img: "../assets/img/doctors/doctors-1.jpg", designation: "Chief Medical Officer", description: "Duis sagittis rutrum neque, quis tincidunt arcu pretium ac.",ldescription:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", phone: "98756 12345", add: "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016" },
+        { id: "2", name: "John White", img: "../assets/img/doctors/doctors-2.jpg", designation: "Anesthesiologist", description: "Aenean ac turpis ante. Mauris velit sapien.", ldescription:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", phone: "98756 12345", add: "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016" },
+        { id: "3", name: "Umika Loha", img: "../assets/img/doctors/doctors-3.jpg", designation: "Cardiology", description: "Curabitur luctus eleifend odio. Phasellus placerat mi.", ldescription:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", phone: "98756 12345", add: "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016" },
+        { id: "4", name: "Daimy Smith", img: "../assets/img/doctors/doctors-4.jpg", designation: "Neurosurgeon", description: "Morbi vulputate, tortor nec pellentesque molestie, eros nisi ornare purus.", ldescription:"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", phone: "98756 12345", add: "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016" }
+    ]
+
     return (
         <div>
             <section id="doctors" className="doctors">
@@ -12,70 +21,32 @@ function Doctors(props) {
                             ipsum lacus, ut pharetra arcu sagittis nec. Phasellus a eleifend elit.</p>
                     </div>
                     <div className="row">
-                        <div className="col-lg-6">
-                            <div className="member d-flex align-items-start">
-                                <div className="pic"><img src="../assets/img/doctors/doctors-1.jpg" className="img-doctor" alt /></div>
-                                <div className="member-info">
-                                    <h4>Atha Smith</h4>
-                                    <span>Chief Medical Officer</span>
-                                    <p>Duis sagittis rutrum neque, quis tincidunt arcu pretium ac.</p>
-                                    <div className="social">
-                                        <a href><i className="ri-twitter-fill" /></a>
-                                        <a href><i className="ri-facebook-fill" /></a>
-                                        <a href><i className="ri-instagram-fill" /></a>
-                                        <a href> <i className="ri-linkedin-box-fill" /> </a>
+                        {
+                            Data.map((d, i) => (
+
+                                <NavLink to={{
+                                    pathname: "/doctor_details",
+                                    state: {d}
+                                }}>
+                                    <div className="col-6">
+                                        <div className="member d-flex align-items-start">
+                                            <div className="pic"><img src={d.img} className="img-doctor" alt /></div>
+                                            <div className="member-info">
+                                                <h4>{d.name}</h4>
+                                                <span>{d.designation}</span>
+                                                <p>{d.description}</p>
+                                                <div className="social">
+                                                    <a href><i className="ri-twitter-fill" /></a>
+                                                    <a href><i className="ri-facebook-fill" /></a>
+                                                    <a href><i className="ri-instagram-fill" /></a>
+                                                    <a href> <i className="ri-linkedin-box-fill" /></a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 mt-4 mt-lg-0">
-                            <div className="member d-flex align-items-start">
-                                <div className="pic"><img src="../assets/img/doctors/doctors-2.jpg" className="img-doctor" alt /></div>
-                                <div className="member-info">
-                                    <h4>John White</h4>
-                                    <span>Anesthesiologist</span>
-                                    <p>Aenean ac turpis ante. Mauris velit sapien.</p>
-                                    <div className="social">
-                                        <a href><i className="ri-twitter-fill" /></a>
-                                        <a href><i className="ri-facebook-fill" /></a>
-                                        <a href><i className="ri-instagram-fill" /></a>
-                                        <a href> <i className="ri-linkedin-box-fill" /> </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 mt-4">
-                            <div className="member d-flex align-items-start">
-                                <div className="pic"><img src="../assets/img/doctors/doctors-3.jpg" className="img-doctor" alt /></div>
-                                <div className="member-info">
-                                    <h4>Umika Loha</h4>
-                                    <span>Cardiology</span>
-                                    <p>Curabitur luctus eleifend odio. Phasellus placerat mi.</p>
-                                    <div className="social">
-                                        <a href><i className="ri-twitter-fill" /></a>
-                                        <a href><i className="ri-facebook-fill" /></a>
-                                        <a href><i className="ri-instagram-fill" /></a>
-                                        <a href> <i className="ri-linkedin-box-fill" /> </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-lg-6 mt-4">
-                            <div className="member d-flex align-items-start">
-                                <div className="pic"><img src="../assets/img/doctors/doctors-4.jpg" className="img-doctor" alt /></div>
-                                <div className="member-info">
-                                    <h4>Daimy Smith</h4>
-                                    <span>Neurosurgeon</span>
-                                    <p>Morbi vulputate, tortor nec pellentesque molestie, eros nisi ornare purus.</p>
-                                    <div className="social">
-                                        <a href><i className="ri-twitter-fill" /></a>
-                                        <a href><i className="ri-facebook-fill" /></a>
-                                        <a href><i className="ri-instagram-fill" /></a>
-                                        <a href> <i className="ri-linkedin-box-fill" /> </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                </NavLink>
+                            ))
+                        }
                     </div>
                 </div>
             </section>

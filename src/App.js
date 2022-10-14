@@ -11,6 +11,7 @@ import {Switch, Route} from "react-router-dom"
 import Auth from './container/auth/Auth';
 import Medicines from './container/medicines/Medicines';
 import ListAppointment from './container/appointment/ListAppointment';
+import DoctorDetails from './container/doctors/DoctorDetails';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path={"/appointment"} exact component={Appointment} />
         <Route path={"/auth"} exact component={Auth}/>
         <Route path={"/list_app"} exact component={ListAppointment}/>
+        <Route path={"/doctor_details"} exact component={DoctorDetails}/>
       </Switch>
       <Footer />
     </>
