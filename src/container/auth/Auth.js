@@ -45,11 +45,15 @@ function Auth(props) {
 
     let schema = yup.object().shape(authSchema);
 
+    const handleLogin = (values) => {
+        localStorage.setItem('login',true)
+    }
+
     const formikObj = useFormik({
         initialValues: intVal,
         validationSchema: schema,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            handleLogin(values);
         },
     });
 

@@ -2,6 +2,13 @@ import React from 'react';
 import {NavLink} from "react-router-dom"
 
 function Header(props) {
+
+    let login = localStorage.getItem('login')
+
+    const handleLogout = () => {
+        localStorage.removeItem('login')
+    }
+
     return (
         <>
             <div className="main-header">
@@ -40,9 +47,16 @@ function Header(props) {
                         </nav>
                         <NavLink to={"/appointment"} className="appointment-btn scrollto"><span className="d-none d-md-inline">Make an</span>
                             Appointment</NavLink>
+                        {
+                            login ?
+                            <NavLink to={"/auth"} className="appointment-btn scrollto">
+                            <span className="d-none d-md-inline" onClick={() => handleLogout()}>Logout</span>
+                        </NavLink>
+                        :
                         <NavLink to={"/auth"} className="appointment-btn scrollto">
                             <span className="d-none d-md-inline">Login/ Signup</span>
                         </NavLink>
+                        }
                     </div>
                 </header>
             </div>
