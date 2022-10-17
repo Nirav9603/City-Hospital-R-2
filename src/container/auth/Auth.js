@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
@@ -47,7 +47,9 @@ function Auth(props) {
 
     const handleLogin = (values) => {
         localStorage.setItem('login',true)
+        window.location.reload(false);
     }
+
 
     const formikObj = useFormik({
         initialValues: intVal,
