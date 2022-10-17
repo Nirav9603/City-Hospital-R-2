@@ -1879,3 +1879,8 @@ section {
   position: relative;
   font-weight: 500;
 }
+
+.d-row{
+  display: flex;
+  flex-wrap: wrap;
+}
